@@ -83,5 +83,18 @@ public class PaymentMessages {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "PaymentMessages{" +
+                "transactionId='" + transactionId + '\'' +
+                ", amount=" + amount +
+                ", currency='" + currency + '\'' +
+                ", payer='" + payer + '\'' +
+                ", payee='" + payee + '\'' +
+                ", status=" + status +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
 

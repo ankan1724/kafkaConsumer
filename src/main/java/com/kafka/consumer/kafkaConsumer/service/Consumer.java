@@ -13,25 +13,27 @@ import org.springframework.stereotype.Service;
 
 @Service
 
+
+// removing this as this is normal consumer..
 public class Consumer {
-    private static String inputTopic="payment_EOD_data";
-    private static String outputTopic="payment_successfull_EOD_data";
-
-    Logger log= LoggerFactory.getLogger(this.getClass());
-
-    private ObjectMapper objectMapper = new ObjectMapper();
-
-    @KafkaListener(topics = "payment_EOD_data", groupId = "payment-group")
-    public void consume(String message) {
-        try {
-            // manually Deserialize the JSON string into PaymentMessages object
-            MessageWrapper wrapper = objectMapper.readValue(message, MessageWrapper.class);
-            PaymentMessages messages=wrapper.getPayload();
-            log.info("Received Message from topic");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private static String inputTopic="payment_EOD_data";
+//    private static String outputTopic="payment_successfull_EOD_data";
+//
+//    Logger log= LoggerFactory.getLogger(this.getClass());
+//
+//    private ObjectMapper objectMapper = new ObjectMapper();
+//
+//    @KafkaListener(topics = "payment_EOD_data", groupId = "payment-group")
+//    public void consume(String message) {
+//        try {
+//            // manually Deserialize the JSON string into PaymentMessages object
+//            MessageWrapper wrapper = objectMapper.readValue(message, MessageWrapper.class);
+//            PaymentMessages messages=wrapper.getPayload();
+//            log.info("Received this message: {}",messages.toString());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
 }

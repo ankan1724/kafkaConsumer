@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
+import org.springframework.kafka.support.serializer.JsonSerde;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,5 +43,20 @@ public class Config {
         }
 
 
+
     }
+    @Bean
+    public JsonSerde<PaymentMessages> paymentSerde() {
+
+        JsonDeserializer<PaymentMessages> deserializer =
+                new JsonDeserializer<>(PaymentMessages.class,false);
+
+        deserializer.addTrustedPackages("*");
+
+        JsonSerializer<PaymentMessages> serializer =
+                new JsonSerializer<>();
+
+        return new JsonSerde<>(serializer, deserializer);
+    }
+
 }
