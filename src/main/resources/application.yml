@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: Kafka-Consumer-Streams
+
+  kafka:
+    consumer:
+      properties:
+        spring.json.trusted.packages: "java.util, java.lang, com.kafka.consumer.kafkaConsumer.service, com.kafka.consumer.kafkaConsumer.service.*, org.springframework.messaging.support"
+
+kafka:
+  ssl:
+    bootstrap-servers: localhost:9093
+    group-id: payment-group
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    security-protocol: SSL
+    truststore-location: D:/kafkaSSL/consumer-truststore.jks
+    truststore-password: ankan1724
+    keystore-location: D:/kafkaSSL/consumer-keystore.jks
+    keystore-password: ankan1724
+    key-password: ankan1724
+#    max.poll.interval.ms: 600000
+#    session.timeout.ms: 30000
+    auto-offset-reset: earliest
+    enable-auto-commit: true
+  streams:
+    bootstrap-server: localhost:9093
+
+server:
+  port: 9998
+
